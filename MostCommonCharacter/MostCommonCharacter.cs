@@ -10,15 +10,16 @@ namespace MostCommonCharacter.UnitTesting
 {
     public class NUnitTest : AssertionHelper
     {
-        [TestCase("aab")]
-        [TestCase("aaab")]
-        public void MostCommonChar(string word)
+        [TestCase("aab", 'a')]
+        [TestCase("abbb", 'b')]
+        public void MostCommonChar(string word, char result)
         {
             int[] charCount = new int[1000];
+
             char maxChar = ' ';
             int maxCount = 0;
 
-            for (var i = word.Length - 1; i >= 0; i++)
+            for (var i = word.Length - 1; i >= 0; i--)
             {
                 char currentChar = word[i];
 
@@ -29,8 +30,9 @@ namespace MostCommonCharacter.UnitTesting
                 }
             }
 
+     
             // Inherited syntax
-            Expect(maxChar, EqualTo('a'));
+            Expect(maxChar, EqualTo(result));
         }
 
 
